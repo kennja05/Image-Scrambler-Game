@@ -3,20 +3,63 @@ let currentPosition = { x: 0, y: 0} //starts off at bottom right
 let prevTile;
 NodeList.prototype.find = Array.prototype.find
 
-//let Picture = ["https://static.wixstatic.com/media/b77fe464cfc445da9003a5383a3e1acf.jpg","https://food.fnr.sndimg.com/content/dam/images/food/editorial/talent/guy-fieri/FN-TalentAvatar-Guy-Fieri-colorblock.jpg.rend.hgtvcom.616.616.suffix/1531174403377.jpeg","https://www.biography.com/.image/t_share/MTIwNjA4NjM0MTI0NTM1MzA4/guy-fieri-101311-1-402.jpg","https://pbs.twimg.com/profile_images/1162445050590183424/WL2lQ7OR_400x400.jpg","https://cdn.vox-cdn.com/thumbor/vXCXUHwyomFOsISJFhHPfRdZCa8=/0x0:5221x3481/1200x800/filters:focal(2064x1785:2898x2619)/cdn.vox-cdn.com/uploads/chorus_image/image/59410935/GettyImages_642908826.0.jpg","https://media.gq.com/photos/59dfc6d9d61cb80476584e18/16:9/w_1280,c_limit/guy-fieiri-flame.jpg","https://media2.s-nbcnews.com/i/newscms/2018_37/1366573/guy-fieri-today-main-180910_463605ac6a5e40795b552795b5215fd0.jpg","https://kubrick.htvapps.com/htv-prod-media.s3.amazonaws.com/images/the-guy-fieri-1568310608.jpg?crop=1.00xw:0.812xh;0,0&resize=900:*","https://wydaily.com/wp-content/uploads/2019/04/Guy_Fieri_cropped.jpg"]
+function start(){
+    let button = document.getElementById('start')
+    button.addEventListener('click', (event) => {
+      const board = document.getElementById('board')
+      const non_perverted_board = [...board.children]
+      const array = [...board.children]
+      let newGame = []
+      newGame = array.sort(function (a,b){return 0.5 - Math.random()})
+      console.log(array[0])
+      console.log(non_perverted_board[0])
+      while (board.firstChild){
+        board.firstChild.remove()
+      }
+      for(let i=0; i<newGame.length; i++){
+        board.insertAdjacentHTML("beforeend",`
+      <div class="tile" data-x=${non_perverted_board[i].dataset.x} data-y=${non_perverted_board[i].dataset.y} id="${newGame[i].id}"></div>
+      `)
+    }
+      for(let i = 0; i<newGame.length; i++){
+        //find empty 
+        if(newGame[i].id == 'empty'){
+          let currentPosition = {x : newGame[i].x, y : newGame[i].y}
+          renderBot(currentPosition)
+        }
+      }
+    })
+}
+function check(){
+  
+}
+
+
+function separate(){
+   const currentTile = document.getElementsByClassName('tile')
+   const board2 = document.getElementById('board2')
+   const currentTileArray = [...currentTile]
+   for(let i=0; i<currentTileArray.length; i++){
+     board2.insertAdjacentHTML("beforeend",`
+   <div class="tile" data-x=${currentTileArray[i].dataset.x} data-y=${currentTileArray[i].dataset.y} id="${currentTileArray[i].id}"></div>
+   `)
+  }
+ board2.style.display = "none";
+
+}
+
 function createGrid(){
+  const setTheory = ["empty","piece1","piece2","piece3","piece4","piece5","piece6","piece7","piece8"]
   const board = document.querySelector("#board")
-//separate counter 
-let counter = 0
-//<img id= "thing" src=${Picture[counter]} style= "height:5vw
+  const start = document.getElementById('start')
+  start.innerText = 'start game'
+  let counter = 0
   for (let i=0; i < 3; i++){
     for (let j=0; j < 3; j++){
       board.insertAdjacentHTML("beforeend", `
-        <div class="tile" data-x=${j} data-y=${i} id="piece${counter}"></div>
+        <div class="tile" data-x=${j} data-y=${i} id="${setTheory[counter]}"></div>
         `)
-        counter += 1 
-        //j = pictures[counter] 
-        // j = puzzle_piece[j] , i = puzzle_piece[i]
+        counter += 1
     }
   }
 }
@@ -44,7 +87,7 @@ function renderBot(targetPosition){
 
     newTile.id = "empty"
     prevTile = newTile
-
+    check()
     return true
   }
 
