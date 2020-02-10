@@ -42,7 +42,7 @@ functionname(){
 
 */
 #empty {
-  background-image: url("");
+  background-image: url("./assets/images/fieri/Guy0.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

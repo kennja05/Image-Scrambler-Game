@@ -28,11 +28,24 @@ function start() {
     renderBox(currentPosition)
   })
 }
-
-function check() {
-
+function check(){
+  let currentPos = Array.from(document.getElementsByClassName('tile')).map(div => div.id).slice(0,9)
+  let solution = ["empty","piece1","piece2","piece3","piece4","piece5","piece6","piece7","piece8"]
+  if (JSON.stringify(currentPos) === JSON.stringify(solution)){
+    solvedPuzzle()
+  }
 }
 
+//this function will be updated to take in the logic for posting to the leaderboard
+function solvedPuzzle(){
+  let controlPanel = document.getElementById('control-panel')
+  let myDiv = document.createElement('div')
+  let moveCount = document.getElementById('move number').innerText
+  myDiv.innerHTML = `<h3>Puzzle solved in ${moveCount} moves</h3>`
+  controlPanel.append(myDiv);
+  //create form that will take in user name and then post it to the database along with move count + timer
+  //button to restart game
+}
 
 function separate() {
   const currentTile = document.getElementsByClassName('tile')
@@ -114,6 +127,7 @@ function move(direction) {
   if (moved) {
     currentPosition = { x, y }
   }
+  check()
 }
 
 
