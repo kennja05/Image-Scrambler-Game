@@ -1,11 +1,15 @@
 body {
   display: grid;
   grid-template-columns: 3fr 3fr;
+  height: 95vh;
+  width: 95vw;
 }
 
 #board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  height: 95vh;
+  width: 95vh;
 }
 #stopWatch { width: 280px; height: auto; text-align: center; display: block; padding: 5px; margin: 0 auto; } #timer, #fulltime { width: auto; height: auto; padding: 10px; font-weight: bold; font-family: tahoma; display: block; border: 1px solid #eee; text-align: center; box-shadow: 0 0 5px #ccc; background: #fbfbf0; color: blue; border-bottom:4px solid darkgrey; } button { cursor: pointer; font-weight: 700; } #fulltime { display:none; font-size:16px; font-weight:bold; } 
 
@@ -13,8 +17,10 @@ body {
 .tile {
   background-image: url("https://cdn.visual-paradigm.com/guide/data-modeling/what-is-erd/17-dfd-data-store-modeled-by-erd.png");
   border-style: solid;
+  border-color:gray;
   border-width: 1px;
-  height: 5vw;
+  /* size: 33%;
+  height: 100%; */
 }
 
 /*
@@ -32,56 +38,55 @@ functionname(){
 #empty {
   background-image: url("");
   background-repeat: no-repeat;
-  background-size: 5vw 5vw;
+  background-size: cover;
   background-position: center;
-
 }
 
 #piece1 {
-    background-image: url("https://food.fnr.sndimg.com/content/dam/images/food/editorial/talent/guy-fieri/FN-TalentAvatar-Guy-Fieri-colorblock.jpg.rend.hgtvcom.616.616.suffix/1531174403377.jpeg");
+    background-image: url("./assets/images/fieri/Guy1.jpg");
     background-repeat: no-repeat;
-    background-size: 5vw 5vw;
+    background-size: cover;
     background-position: center ;
 }
 #piece2 {
-  background-image: url("https://www.biography.com/.image/t_share/MTIwNjA4NjM0MTI0NTM1MzA4/guy-fieri-101311-1-402.jpg");
+  background-image: url("./assets/images/fieri/Guy2.jpg");
   background-repeat: no-repeat;
-  background-size: 5vw 5vw;
+  background-size: cover;
   background-position: center;
 }
 #piece3 {
-  background-image: url("https://pbs.twimg.com/profile_images/1162445050590183424/WL2lQ7OR_400x400.jpg");
+  background-image: url("./assets/images/fieri/Guy3.jpg");
   background-repeat: no-repeat;
-  background-size: 5vw 5vw;
+  background-size: cover;
   background-position: center;
 }
 #piece4 {
-  background-image: url("https://cdn.vox-cdn.com/thumbor/vXCXUHwyomFOsISJFhHPfRdZCa8=/0x0:5221x3481/1200x800/filters:focal(2064x1785:2898x2619)/cdn.vox-cdn.com/uploads/chorus_image/image/59410935/GettyImages_642908826.0.jpg");
+  background-image: url("./assets/images/fieri/Guy4.jpg");
   background-repeat: no-repeat;
-  background-size: 5vw 5vw;
+  background-size: cover;
   background-position: center;
 }
 #piece5 {
-  background-image: url("https://media.gq.com/photos/59dfc6d9d61cb80476584e18/16:9/w_1280,c_limit/guy-fieiri-flame.jpg");
+  background-image: url("./assets/images/fieri/Guy5.jpg");
   background-repeat: no-repeat;
-  background-size: 5vw 5vw;
+  background-size: cover;
   background-position: center;
 }
 #piece6 {
-  background-image: url("https://media2.s-nbcnews.com/i/newscms/2018_37/1366573/guy-fieri-today-main-180910_463605ac6a5e40795b552795b5215fd0.jpg");
+  background-image: url("./assets/images/fieri/Guy6.jpg");
   background-repeat: no-repeat;
-  background-size: 5vw 5vw;
+  background-size: cover;
   background-position: center;
 }
 #piece7 {
-  background-image: url("https://kubrick.htvapps.com/htv-prod-media.s3.amazonaws.com/images/the-guy-fieri-1568310608.jpg?crop=1.00xw:0.812xh;0,0&resize=900:*");
+  background-image: url("./assets/images/fieri/Guy7.jpg");
   background-repeat: no-repeat;
-  background-size: 5vw 5vw;
+  background-size: cover;
   background-position: center;
 }
 #piece8 {
-  background-image: url("https://wydaily.com/wp-content/uploads/2019/04/Guy_Fieri_cropped.jpg");
+  background-image: url("./assets/images/fieri/Guy8.jpg");
   background-repeat: no-repeat;
-  background-size: 5vw 5vw;
+  background-size: cover;
   background-position: center;
 }
