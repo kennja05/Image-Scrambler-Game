@@ -12,8 +12,6 @@ function start() {
     let newGame = []
     newGame = array.sort(function (a, b) { return 0.5 - Math.random() })
 
-    // console.log("newGame", newGame);
-    // console.log(non_perverted_board[0])
     while (board.firstChild) {
       board.firstChild.remove()
     }
@@ -27,7 +25,7 @@ function start() {
     currentPosition = tile.dataset
     prevTile = tile;
     console.log("GIVE ME THAT BOY:", currentPosition);
-    renderBot(currentPosition)
+    renderBox(currentPosition)
   })
 }
 
@@ -70,7 +68,7 @@ function smartCounting() {
   count.innerHTML = counting + 1
 }
 
-function renderBot(targetPosition) {
+function renderBox(targetPosition) {
   const tiles = document.querySelectorAll(".tile")
 
   const newTile = tiles.find(function (tile) {
@@ -87,7 +85,7 @@ function renderBot(targetPosition) {
 
     prevTile = newTile
     newTile.id = "empty"
-    // check()
+     check()
     return true
   }
   
@@ -112,7 +110,7 @@ function move(direction) {
       break;
     }
           
-  const moved = renderBot({ x, y })
+  const moved = renderBox({ x, y })
   if (moved) {
     currentPosition = { x, y }
   }

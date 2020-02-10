@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   createGrid()
-  renderBot(currentPosition)
+  renderBox(currentPosition)
   separate()
   start()
   document.addEventListener('keydown', function (e) {
