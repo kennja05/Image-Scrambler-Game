@@ -11,7 +11,14 @@ function start() {
     const array = [...board.children]
     let newGame = []
     newGame = array.sort(function (a, b) { return 0.5 - Math.random() })
-
+    if (document.getElementById('timer').innerText == 0) {
+    function incrementTimer(){
+      let timer = document.getElementById('timer')
+      let newTime = parseInt(timer.innerText) + 1
+      timer.innerText = newTime
+    }
+    const timeElapsed = setInterval(incrementTimer, 1000)
+     }
     // console.log("newGame", newGame);
     // console.log(non_perverted_board[0])
     while (board.firstChild) {
@@ -38,12 +45,14 @@ function check(){
   }
 }
 
+
 //this function will be updated to take in the logic for posting to the leaderboard
 function solvedPuzzle(){
   let controlPanel = document.getElementById('control-panel')
   let myDiv = document.createElement('div')
   let moveCount = document.getElementById('move number').innerText
-  myDiv.innerHTML = `<h3>Puzzle solved in ${moveCount} moves</h3>`
+  let time = document.getElementById('timer').innerText
+  myDiv.innerHTML = `<h3>Puzzle solved in ${moveCount} moves in ${time} seconds</h3>`
   controlPanel.append(myDiv);
   //create form that will take in user name and then post it to the database along with move count + timer
   //button to restart game
