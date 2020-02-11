@@ -1,4 +1,7 @@
-
+// require(['lib/easytimer/dist/easytimer.min.js'], function (easytimer) {
+//   var timer = new easytimer.Timer();
+// });
+    
 let currentPosition = { x: 0, y: 0 } //starts off at bottom right
 let prevTile;
 NodeList.prototype.find = Array.prototype.find
@@ -11,6 +14,35 @@ function start() {
     const array = [...board.children]
     let newGame = []
     newGame = array.sort(function (a, b) { return 0.5 - Math.random() })
+    let minute = 00
+    let hour = 00
+    let separateCounter = 0
+    let oneZeroSecond
+    let oneZeroMinute
+    let oneZeroHour
+    let timeSplit
+    if (document.getElementById('timer').innerText == "00:00:00") {
+      function incrementTimer(){
+        let timer = document.getElementById('timer')
+        let splitTime = timer.innerText.split(':')
+        timeSplit = splitTime[2]
+        let seconds = parseInt(timeSplit) + 1
+        separateCounter = seconds
+      if(separateCounter >= 60){
+        minute += 1
+        seconds = 0
+      }
+      if(minute >= 60){
+        hour += 1
+        minute = 0 
+      }
+      if(seconds < 10){ oneZeroSecond = '0' + seconds}else{ oneZeroSecond = seconds}
+      if(minute <10){ oneZeroMinute = '0' + minute}else{ oneZeroMinute = minute}
+      if(hour <10){ oneZeroHour = '0' + hour}else{ oneZeroHour = hour}
+      timer.innerText = oneZeroHour + ' : ' + oneZeroMinute + ' : ' + oneZeroSecond
+      }
+      const timeElapsed = setInterval(incrementTimer, 1000)
+    }
 
     while (board.firstChild) {
       board.firstChild.remove()
@@ -36,12 +68,14 @@ function check(){
   }
 }
 
+
 //this function will be updated to take in the logic for posting to the leaderboard
 function solvedPuzzle(){
   let controlPanel = document.getElementById('control-panel')
   let myDiv = document.createElement('div')
   let moveCount = document.getElementById('move number').innerText
-  myDiv.innerHTML = `<h3>Puzzle solved in ${moveCount} moves</h3>`
+  let time = document.getElementById('timer').innerText
+  myDiv.innerHTML = `<h3>Puzzle solved in ${moveCount} moves in ${time} seconds</h3>`
   controlPanel.append(myDiv);
   //create form that will take in user name and then post it to the database along with move count + timer
   //button to restart game
