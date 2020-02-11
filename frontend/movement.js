@@ -103,7 +103,7 @@ function createGrid() {
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
       board.insertAdjacentHTML("beforeend", `
-        <div class="tile" data-x=${j} data-y=${i} id="${setTheory[counter]}"></div>
+        <div class="tile" style="transform: translate(${j * 100}%,${i * 100}%);" data-x=${j} data-y=${i} id="${setTheory[counter]}"></div>
         `)
       counter += 1
     }
