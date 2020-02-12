@@ -77,13 +77,35 @@ function solvedPuzzle(){
    // if(myDiv.innerHTML){
       myDiv.innerHTML = `<h3>Puzzle solved in ${moveCount} moves in ${time} seconds</h3>` 
       controlPanel.append(myDiv);
-    addplayertoleader()
+    addPlayerToLeader(moveCount, time)
    // }
   }
   //debugger;
   
   //create form that will take in user name and then post it to the database along with move count + timer
   //button to restart game
+}
+
+function addPlayerToLeader(moves, timeSpent){
+  let victoryForm = document.createElement('form');
+  victoryForm.innerHTML = `<input type='text' value="" name='username' placeholder='Your Name'</input>`
+  let controlPanel = document.getElementById('control-panel')
+  controlPanel.append(victoryForm)
+  victoryForm.addEventListener('submit', function(e){
+    e.preventDefault()
+    gameObj = {username: e.target.username.value, moves: moves, time: timeSpent}
+    fetch('http://localhost:3000/api/v1/games', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application-json'
+      },
+      body: {
+        gameObj
+      }
+    })
+    // .then(resp => resp.json())
+    // .then(game => console.log(game))
+  })
 }
 
 function separate() {
@@ -147,7 +169,6 @@ function renderBox(targetPosition) {
 }
 
 function move(direction) {
-  console.log("CURRENT POSITION:", currentPosition);
   let x = currentPosition.x;
   let y = currentPosition.y;
   switch (direction) {

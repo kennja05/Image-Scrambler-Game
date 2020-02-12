@@ -7,4 +7,8 @@ class Api::V1::GamesController < ApplicationController
         render json: @gameLeaderboard
     end 
 
+    def create
+        
+    end
+
 end
