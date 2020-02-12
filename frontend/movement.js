@@ -49,8 +49,8 @@ function start() {
     }
     for (let i = 0; i < newGame.length; i++) {
       board.insertAdjacentHTML("beforeend", `
-      <div class="tile" data-x=${non_perverted_board[i].dataset.x} data-y=${non_perverted_board[i].dataset.y} id="${newGame[i].id}"></div>
-      `)
+      <div class="tile" style="transform: translate(${non_perverted_board[i].dataset.x *100}%,${non_perverted_board[i].dataset.y *100}%)" data-x=${non_perverted_board[i].dataset.x} data-y=${non_perverted_board[i].dataset.y} id="${newGame[i].id}"></div>
+      `)  //style="transform: translate(${j * 100}%,${i * 100}%)
     }
     const tile = document.querySelector('#empty');
 
