@@ -19,5 +19,26 @@ document.addEventListener("DOMContentLoaded", function () {
       moveLi.innerText = 'Left'
     }
   })
+
+  const leaderBoard = function(){
+    fetch('http://localhost:3000/api/v1/games')
+    .then(resp => resp.json())
+    .then(games => games.forEach(game => createLi(game)))
+  }
+  leaderBoard()
 })
 
+function createLi(gameInstance) {
+  const time = gameInstance.time.split(':')
+  const hours = time[0]
+  const minutes = time[1]
+  const seconds = time[2]
+  const li = document.createElement('li')
+  const ol = document.getElementById('leaderboard')
+  li.innerHTML = `
+    <p class="leader"><b>Name: </b>${gameInstance.username}
+    <ul><li>
+    <b>Move Count: </b>${gameInstance.moves}</li>
+    <li><b>Time Taken: </b>${hours} hours, ${minutes} minutes, and ${seconds} seconds</li><ul></p>`
+  ol.append(li)  
+}
