@@ -36,7 +36,7 @@ function start() {
       if(seconds < 10){ oneZeroSecond = '0' + seconds}else{ oneZeroSecond = seconds}
       if(minute <10){ oneZeroMinute = '0' + minute}else{ oneZeroMinute = minute}
       if(hour <10){ oneZeroHour = '0' + hour}else{ oneZeroHour = hour}
-      timer.innerText = oneZeroHour + ' : ' + oneZeroMinute + ' : ' + oneZeroSecond
+      timer.innerText = oneZeroHour + ':' + oneZeroMinute + ':' + oneZeroSecond
       }
       const timeElapsed = setInterval(incrementTimer, 1000)
     }
