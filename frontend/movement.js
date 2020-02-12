@@ -1,8 +1,5 @@
-// require(['lib/easytimer/dist/easytimer.min.js'], function (easytimer) {
-//   var timer = new easytimer.Timer();
-// });
-    
-let currentPosition = { x: 0, y: 0 } //starts off at bottom right
+
+    let currentPosition = { x: 0, y: 0 } //starts off at bottom right
 let prevTile;
 NodeList.prototype.find = Array.prototype.find
 
@@ -41,7 +38,7 @@ function start() {
       if(hour <10){ oneZeroHour = '0' + hour}else{ oneZeroHour = hour}
       timer.innerText = oneZeroHour + ' : ' + oneZeroMinute + ' : ' + oneZeroSecond
       }
-      const timeElapsed = setInterval(incrementTimer, 1)
+      const timeElapsed = setInterval(incrementTimer, 1000)
     }
 
     while (board.firstChild) {
@@ -75,8 +72,16 @@ function solvedPuzzle(){
   let myDiv = document.createElement('div')
   let moveCount = document.getElementById('move number').innerText
   let time = document.getElementById('timer').innerText
-  myDiv.innerHTML = `<h3>Puzzle solved in ${moveCount} moves in ${time} seconds</h3>`
-  controlPanel.append(myDiv);
+  
+  if(moveCount != 0){
+   // if(myDiv.innerHTML){
+      myDiv.innerHTML = `<h3>Puzzle solved in ${moveCount} moves in ${time} seconds</h3>` 
+      controlPanel.append(myDiv);
+   
+   // }
+  }
+  //debugger;
+  
   //create form that will take in user name and then post it to the database along with move count + timer
   //button to restart game
 }
@@ -117,7 +122,8 @@ function smartCounting() {
 
 function renderBox(targetPosition) {
   const tiles = document.querySelectorAll(".tile")
-
+  const gameStarted = document.getElementById("gamestarted")
+  gameStarted.style.display = "none";
   const newTile = tiles.find(function (tile) {
     return parseInt(tile.dataset.x) == parseInt(targetPosition.x) && parseInt(tile.dataset.y) == parseInt(targetPosition.y)
   })
@@ -125,9 +131,11 @@ function renderBox(targetPosition) {
     return false;
   } else {
     if (prevTile) {
+      if(gameStarted.innerText == "true"){
       smartCounting()
+    }
       prevTile.id = newTile.id
-      //prevTile.img = newTile.img
+      gameStarted.innerHTML = "true"
     }
 
     prevTile = newTile
@@ -161,7 +169,6 @@ function move(direction) {
   if (moved) {
     currentPosition = { x, y }
   }
-  check()
 }
 
 
