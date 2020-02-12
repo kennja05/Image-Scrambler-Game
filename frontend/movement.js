@@ -77,7 +77,7 @@ function solvedPuzzle(){
    // if(myDiv.innerHTML){
       myDiv.innerHTML = `<h3>Puzzle solved in ${moveCount} moves in ${time} seconds</h3>` 
       controlPanel.append(myDiv);
-   
+    addplayertoleader()
    // }
   }
   //debugger;
