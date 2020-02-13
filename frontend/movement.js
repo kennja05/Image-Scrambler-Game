@@ -93,15 +93,13 @@ function addPlayerToLeader(moves, timeSpent){
   controlPanel.append(victoryForm)
   victoryForm.addEventListener('submit', function(e){
     e.preventDefault()
-    gameObj = {username: e.target.username.value, moves: moves, time: timeSpent}
+    gameObj = {username: e.target.username.value, moves: parseInt(moves), time: timeSpent}
     fetch('http://localhost:3000/api/v1/games', {
       method: "POST",
       headers: {
-        'Content-Type': 'application-json'
+        'Content-Type': 'application/json'
       },
-      body: {
-        gameObj
-      }
+      body: JSON.stringify(gameObj)
     })
     // .then(resp => resp.json())
     // .then(game => console.log(game))
