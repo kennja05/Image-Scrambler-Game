@@ -74,7 +74,8 @@ function solvedPuzzle(){
   let time = document.getElementById('timer').innerText
   
   if(moveCount != 0){
-      let user = prompt(`Puzzle solved in ${moveCount} moves in ${time}! Add your name to the leaderboard with the form below!`)
+      let user = prompt(`Puzzle solved in ${moveCount} moves in ${time}! Post your score by providing your name below`, 'Anonymous Guy Fieri Fan')
+      clearLeaderboard()
       addPlayerToLeader(moveCount, time, user)
   }
 }
@@ -88,9 +89,16 @@ function addPlayerToLeader(moves, timeSpent, userInput){
       },
       body: JSON.stringify(gameObj)
     })
-    // .then(resp => resp.json())
-    // .then(game => console.log(game))
-  // })
+    .then(e => {
+      fetch('http://localhost:3000/api/v1/games')
+      .then(resp => resp.json())
+      .then(games => games.forEach(game => createLi(game)))
+    })
+}
+
+function clearLeaderboard(){
+  let leaderList = document.getElementById('leaderboard');
+  leaderList.innerHTML = ''
 }
 
 // function separate() {
