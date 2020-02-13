@@ -96,25 +96,36 @@ function check() {
 function solvedPuzzle() {
   let moveCount = document.getElementById('move number').innerText
   let time = document.getElementById('timer').innerText
-
-  if (moveCount != 0) {
-    let button = document.getElementById('start')
-    clock('stop')
-    let user = prompt(`Puzzle solved in ${moveCount} moves in ${time}! Add your name to the leaderboard with the form below!`)
-    addPlayerToLeader(moveCount, time, user)
-    button.innerText = 'play again'
+  
+  if(moveCount != 0){
+      let user = prompt(`Puzzle solved in ${moveCount} moves in ${time}! Post your score by providing your name below`, 'Anonymous Guy Fieri Fan')
+      clearLeaderboard()
+      addPlayerToLeader(moveCount, time, user)
+      let button = document.getElementById('start')
+      clock('stop')
+      button.innerText = 'play again'
   }
 }
 
-function addPlayerToLeader(moves, timeSpent, userInput) {
-  gameObj = { username: userInput, moves: parseInt(moves), time: timeSpent }
-  fetch('http://localhost:3000/api/v1/games', {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(gameObj)
-  })
+function addPlayerToLeader(moves, timeSpent, userInput){
+    gameObj = {username: userInput, moves: parseInt(moves), time: timeSpent}
+    fetch('http://localhost:3000/api/v1/games', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(gameObj)
+    })
+    .then(e => {
+      fetch('http://localhost:3000/api/v1/games')
+      .then(resp => resp.json())
+      .then(games => games.forEach(game => createLi(game)))
+    })
+}
+
+function clearLeaderboard(){
+  let leaderList = document.getElementById('leaderboard');
+  leaderList.innerHTML = ''
 }
 
 // function separate() {
