@@ -70,36 +70,41 @@ function check(){
 
 //this function will be updated to take in the logic for posting to the leaderboard
 function solvedPuzzle(){
-  let controlPanel = document.getElementById('control-panel')
-  let myDiv = document.createElement('div')
   let moveCount = document.getElementById('move number').innerText
   let time = document.getElementById('timer').innerText
   
   if(moveCount != 0){
-   // if(myDiv.innerHTML){
-      myDiv.innerHTML = `<h3>Puzzle solved in ${moveCount} moves in ${time} seconds</h3>` 
-      controlPanel.append(myDiv);
-    addplayertoleader()
-   // }
+      let user = prompt(`Puzzle solved in ${moveCount} moves in ${time}! Add your name to the leaderboard with the form below!`)
+      addPlayerToLeader(moveCount, time, user)
   }
-  //debugger;
-  
-  //create form that will take in user name and then post it to the database along with move count + timer
-  //button to restart game
 }
 
-function separate() {
-  const currentTile = document.getElementsByClassName('tile')
-  const board2 = document.getElementById('board2')
-  const currentTileArray = [...currentTile]
-  for (let i = 0; i < currentTileArray.length; i++) {
-    board2.insertAdjacentHTML("beforeend", `
-   <div class="tile" data-x=${currentTileArray[i].dataset.x} data-y=${currentTileArray[i].dataset.y} id="${currentTileArray[i].id}"></div>
-   `)
-  }
-  board2.style.display = "none";
-
+function addPlayerToLeader(moves, timeSpent, userInput){
+    gameObj = {username: userInput, moves: parseInt(moves), time: timeSpent}
+    fetch('http://localhost:3000/api/v1/games', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(gameObj)
+    })
+    // .then(resp => resp.json())
+    // .then(game => console.log(game))
+  // })
 }
+
+// function separate() {
+//   const currentTile = document.getElementsByClassName('tile')
+//   const board2 = document.getElementById('board2')
+//   const currentTileArray = [...currentTile]
+//   for (let i = 0; i < currentTileArray.length; i++) {
+//     board2.insertAdjacentHTML("beforeend", `
+//    <div class="tile" data-x=${currentTileArray[i].dataset.x} data-y=${currentTileArray[i].dataset.y} id="${currentTileArray[i].id}"></div>
+//    `)
+//   }
+//   board2.style.display = "none";
+
+// }
 
 function createGrid() {
   const setTheory = ["empty", "piece1", "piece2", "piece3", "piece4", "piece5", "piece6", "piece7", "piece8"]
@@ -157,7 +162,6 @@ function renderBox(targetPosition) {
 }
 
 function move(direction) {
-  console.log("CURRENT POSITION:", currentPosition);
   let x = currentPosition.x;
   let y = currentPosition.y;
   switch (direction) {
