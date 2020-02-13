@@ -5,7 +5,8 @@ NodeList.prototype.find = Array.prototype.find
 //let timeLapsed = null
 function start() {
   let button = document.getElementById('start')
-
+  let p = document.getElementById('statement?')
+  p.style.display = 'none'
   button.addEventListener('click', (event) => {
     let button = document.getElementById('start')
     let moveCount = document.getElementById('move number')
@@ -15,11 +16,13 @@ function start() {
     button.innerText = 'reshuffle'
     clock('start')
   }else if(button.innerText == 'play again'){
+    p.innerText = 'false'
     moveCount.innerText = 0
     time.innerText = "00:00:00"
     button.innerText = 'reshuffle'
     clock('start')
   }else{
+    p.innerText = 'false'
     moveCount.innerText = 0
     time.innerText = "00:00:00"
   }
@@ -36,7 +39,6 @@ function clock(boolean) {
 }
 
 function incrementTimer() {
-  console.log('HEY I GOT CALLED')
   let minute = 00
   let hour = 00
   let separateCounter = 0
@@ -98,12 +100,18 @@ function solvedPuzzle() {
   let time = document.getElementById('timer').innerText
   
   if(moveCount != 0){
+    let p = document.getElementById('statement?')
+      if(p.innerText == 'false'){
+      p.innerText = 'true'
       let user = prompt(`Puzzle solved in ${moveCount} moves in ${time}! Post your score by providing your name below`, 'Anonymous Guy Fieri Fan')
       clearLeaderboard()
       addPlayerToLeader(moveCount, time, user)
       let button = document.getElementById('start')
       clock('stop')
       button.innerText = 'play again'
+      }else{
+        console.log('you planning on cheating m2^3?')
+      }
   }
 }
 
@@ -128,19 +136,6 @@ function clearLeaderboard(){
   leaderList.innerHTML = ''
 }
 
-// function separate() {
-//   const currentTile = document.getElementsByClassName('tile')
-//   const board2 = document.getElementById('board2')
-//   const currentTileArray = [...currentTile]
-//   for (let i = 0; i < currentTileArray.length; i++) {
-//     board2.insertAdjacentHTML("beforeend", `
-//    <div class="tile" data-x=${currentTileArray[i].dataset.x} data-y=${currentTileArray[i].dataset.y} id="${currentTileArray[i].id}"></div>
-//    `)
-//   }
-//   board2.style.display = "none";
-
-// }
-
 function createGrid() {
   const setTheory = ["empty", "piece1", "piece2", "piece3", "piece4", "piece5", "piece6", "piece7", "piece8"]
   const board = document.querySelector("#board")
@@ -158,8 +153,14 @@ function createGrid() {
 }
 function smartCounting() {
   let count = document.getElementById('move number')
+  let p = document.getElementById('statement?')
   counting = parseInt(count.innerText)
+  if(p.innerText == 'false'){
   count.innerHTML = counting + 1
+  }
+  if(p.innerText == 'true'){
+    console.log('your move count isnt going up')
+  }
 }
 
 function renderBox(targetPosition) {
@@ -177,11 +178,9 @@ function renderBox(targetPosition) {
   } else {
     if (prevTile) {
       if (gameStarted.innerText == "true") {
-        console.log(additionalCounter.innerText)
         if (parseInt(additionalCounter.innerText) >= 1) {
           smartCounting()
         }
-        console.log(additionalCounter)
         additionalCounter.innerText = parseInt(additionalCounter.innerText) + 1
       }
       prevTile.id = newTile.id
