@@ -5,7 +5,10 @@ NodeList.prototype.find = Array.prototype.find
 
 function start() {
   let button = document.getElementById('start')
+  
   button.addEventListener('click', (event) => {
+    const gameStarted = document.getElementById("gamestarted")
+    gameStarted.innerHTML = "true"
     const board = document.getElementById('board')
     const non_perverted_board = [...board.children]
     const array = [...board.children]
@@ -53,7 +56,6 @@ function start() {
 
     currentPosition = tile.dataset
     prevTile = tile;
-    console.log("GIVE ME THAT BOY:", currentPosition);
     renderBox(currentPosition)
   })
 }
@@ -124,6 +126,9 @@ function renderBox(targetPosition) {
   const tiles = document.querySelectorAll(".tile")
   const gameStarted = document.getElementById("gamestarted")
   gameStarted.style.display = "none";
+  const additionalCounter = document.getElementById('countingnumbers')
+  additionalCounter.style.display = 'none'
+
   const newTile = tiles.find(function (tile) {
     return parseInt(tile.dataset.x) == parseInt(targetPosition.x) && parseInt(tile.dataset.y) == parseInt(targetPosition.y)
   })
@@ -132,10 +137,15 @@ function renderBox(targetPosition) {
   } else {
     if (prevTile) {
       if(gameStarted.innerText == "true"){
-      smartCounting()
+        console.log(additionalCounter.innerText)
+        if(parseInt(additionalCounter.innerText) >= 1){
+        smartCounting()
+        }
+        console.log(additionalCounter)
+        additionalCounter.innerText = parseInt(additionalCounter.innerText) + 1
     }
       prevTile.id = newTile.id
-      gameStarted.innerHTML = "true"
+     
     }
 
     prevTile = newTile
