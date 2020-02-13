@@ -25,9 +25,13 @@ function start() {
     p.innerText = 'false'
     moveCount.innerText = 0
     time.innerText = "00:00:00"
+    playMusic()
   }
 })
   
+}
+function playMusic(){
+  audioElement.play()
 }
 function clock(boolean) {
   if(boolean == 'stop'){
@@ -38,14 +42,15 @@ function clock(boolean) {
   }
 }
 
+let separateCounter
+let oneZeroSecond
+let oneZeroMinute
+let oneZeroHour
+let timeSplit
+let minute = 00
+let hour = 00
 function incrementTimer() {
-  let minute = 00
-  let hour = 00
-  let separateCounter = 0
-  let oneZeroSecond
-  let oneZeroMinute
-  let oneZeroHour
-  let timeSplit
+  console.log('hitting this')
   let timer = document.getElementById('timer')
   let splitTime = timer.innerText.split(':')
   timeSplit = splitTime[2]
@@ -54,6 +59,7 @@ function incrementTimer() {
   if (separateCounter >= 60) {
     minute += 1
     seconds = 0
+    console.log(minute)
   }
   if (minute >= 60) {
     hour += 1
