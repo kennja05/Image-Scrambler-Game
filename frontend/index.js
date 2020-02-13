@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   createGrid()
   renderBox(currentPosition)
-  // separate()
   start()
   document.addEventListener('keydown', function (e) {
     const moveLi = document.createElement('li')
