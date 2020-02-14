@@ -20,14 +20,17 @@ function start() {
     moveCount.innerText = 0
     time.innerText = "00:00:00"
     button.innerText = 'reshuffle'
+    let audio = new Audio('./assets/audio/notGudEnuf.mp3')
+    playMusic(audio)
     resetClock()
     clock('start')
   }else{
     p.innerText = 'false'
     moveCount.innerText = 0
     time.innerText = "00:00:00"
+    let audio = new Audio('./assets/audio/idiotSandwich.mp3')
     resetClock()
-    playMusic()
+    playMusic(audio)
   }
 })
   
@@ -37,10 +40,10 @@ function resetClock(){
   hour = 00
 }
 
-function playMusic(){
-  let audio = new Audio('./assets/audio/idiotSandwich.mp3')
+function playMusic(audio){
   audio.play()
 }
+
 function clock(boolean) {
   if(boolean == 'stop'){
     clearInterval(timeLapsed)
@@ -105,11 +108,6 @@ function check() {
   let solution = ["empty", "piece1", "piece2", "piece3", "piece4", "piece5", "piece6", "piece7", "piece8"]
   if (JSON.stringify(currentPos) === JSON.stringify(solution)) {
     solvedPuzzle()
-  }else{
-    let array = ['./assets/audio/idiotSandwich.mp3']
-    let someIndex = Math.floor(Math.random() * Math.floor(array.length))
-    let audio = new Audio(array[someIndex])
-    audio.play()
   }
 }
 
@@ -119,7 +117,11 @@ function solvedPuzzle() {
   
   if(moveCount != 0){
     let p = document.getElementById('statement?')
-      if(p.innerText == 'false'){
+    if(p.innerText == 'false'){
+      let array = ['./assets/audio/GuyFieri1.mp3','./assets/audio/GuyFieri2.mp3','./assets/audio/GuyFieri3.mp3','./assets/audio/GuyFieri4.mp3']
+      let someIndex = Math.floor(Math.random() * Math.floor(array.length))
+      let audio = new Audio(array[someIndex])
+      audio.play()
       
       p.innerText = 'true'
       let user = prompt(`Puzzle solved in ${moveCount} moves in ${time}! Post your score by providing your name below`, 'Anonymous Guy Fieri Fan')
