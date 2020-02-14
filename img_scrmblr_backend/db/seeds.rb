@@ -8,7 +8,7 @@
 
 Game.destroy_all
 
-game1 = Game.create(username: "Jacob", moves: 57, time: "00 : 00 : 30")
+game1 = Game.create(username: "Jacob", moves: 26, time: "00 : 00 : 22")
 game2 = Game.create(username: "Alisher", moves: 48, time: "00 : 01 : 15")
 # game3 = Game.create(username: "Tyler Florence", moves: 701, time: "00 : 10 : 42")
 # game4 = Game.create(username: "Allton Brown", moves: 700, time: "00 : 18 : 09")
