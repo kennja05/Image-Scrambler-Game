@@ -20,16 +20,23 @@ function start() {
     moveCount.innerText = 0
     time.innerText = "00:00:00"
     button.innerText = 'reshuffle'
+    resetClock()
     clock('start')
   }else{
     p.innerText = 'false'
     moveCount.innerText = 0
     time.innerText = "00:00:00"
+    resetClock()
     playMusic()
   }
 })
   
 }
+function resetClock(){
+  minute = 00
+  hour = 00
+}
+
 function playMusic(){
   audioElement.play()
 }
@@ -50,7 +57,6 @@ let timeSplit
 let minute = 00
 let hour = 00
 function incrementTimer() {
-  console.log('hitting this')
   let timer = document.getElementById('timer')
   let splitTime = timer.innerText.split(':')
   timeSplit = splitTime[2]
