@@ -38,7 +38,8 @@ function resetClock(){
 }
 
 function playMusic(){
-  audioElement.play()
+  let audio = new Audio('./assets/audio/idiotSandwich.mp3')
+  audio.play()
 }
 function clock(boolean) {
   if(boolean == 'stop'){
@@ -104,6 +105,11 @@ function check() {
   let solution = ["empty", "piece1", "piece2", "piece3", "piece4", "piece5", "piece6", "piece7", "piece8"]
   if (JSON.stringify(currentPos) === JSON.stringify(solution)) {
     solvedPuzzle()
+  }else{
+    let array = ['./assets/audio/idiotSandwich.mp3']
+    let someIndex = Math.floor(Math.random() * Math.floor(array.length))
+    let audio = new Audio(array[someIndex])
+    audio.play()
   }
 }
 
@@ -114,6 +120,7 @@ function solvedPuzzle() {
   if(moveCount != 0){
     let p = document.getElementById('statement?')
       if(p.innerText == 'false'){
+      
       p.innerText = 'true'
       let user = prompt(`Puzzle solved in ${moveCount} moves in ${time}! Post your score by providing your name below`, 'Anonymous Guy Fieri Fan')
       clearLeaderboard()
