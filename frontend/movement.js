@@ -20,7 +20,7 @@ function start() {
     moveCount.innerText = 0
     time.innerText = "00:00:00"
     button.innerText = 'reshuffle'
-    let audio = new Audio('./assets/audio/notGudEnuf.mp3')
+    let audio = new Audio('./assets/audio/NotGudEnuff.mp3')
     playMusic(audio)
     resetClock()
     clock('start')
