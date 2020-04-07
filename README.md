@@ -7,7 +7,7 @@ In order to pass through the gates of Flavortown there are a variety of trials t
 *Instructions
 
     1) Setup
-        a) Clone the repo to your local machine and run the command 'cd MOD3PROJECT' in the terminal
+        a) Clone the repo to your local machine and run the command 'cd Image-Scrambler-Game' in the terminal
         b) Open a second terminal tab
         c) In the first terminal tab run the command 'cd img_scrmblr_backend' followed by the command 'rails s'
             - If that is successful move to the next step. Otherwise you may first need to enter the commands 'rails db:create' and then 'rails db:migrate'
