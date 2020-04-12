@@ -4,6 +4,9 @@ Alisher Fayzimatov and Jacob Kenny
 
 In order to pass through the gates of Flavortown there are a variety of trials that one must pass - there are physical challenges such as eat a whole plate of trashcan nachos, and get frosted tips at the salon, but in order for there to be balance there must also be mental challenges...
 
+*Video Demonstration
+https://www.youtube.com/watch?v=BNmb7fpG_LQ
+
 *Instructions
 
     1) Setup
