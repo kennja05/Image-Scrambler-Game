@@ -20,17 +20,17 @@ function start() {
     moveCount.innerText = 0
     time.innerText = "00:00:00"
     button.innerText = 'reshuffle'
-    let audio = new Audio('./assets/audio/NotGudEnuff.mp3')
-    playMusic(audio)
+    // let audio = new Audio('./assets/audio/NotGudEnuff.mp3')
+    // playMusic(audio)
     resetClock()
     clock('start')
   }else{
     p.innerText = 'false'
     moveCount.innerText = 0
     time.innerText = "00:00:00"
-    let audio = new Audio('./assets/audio/idiotSandwich.mp3')
+    // let audio = new Audio('./assets/audio/idiotSandwich.mp3')
     resetClock()
-    playMusic(audio)
+    // playMusic(audio)
   }
 })
   
@@ -107,8 +107,12 @@ function check() {
   let currentPos = Array.from(document.getElementsByClassName('tile')).map(div => div.id).slice(0, 9)
   let solution = ["empty", "piece1", "piece2", "piece3", "piece4", "piece5", "piece6", "piece7", "piece8"]
   if (JSON.stringify(currentPos) === JSON.stringify(solution)) {
-    solvedPuzzle()
+    sleep(210).then(() => solvedPuzzle())
   }
+}
+
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
 }
 
 function solvedPuzzle() {

@@ -3,7 +3,7 @@ class Api::V1::GamesController < ApplicationController
     def index
         #for the leaderboard. currently sorts by number of moves.
         #could look in to sorting by time (currently a string)
-        @gameLeaderboard = Game.all.sort_by { |game| game.moves }.slice(0, 5)
+        @gameLeaderboard = Game.all.sort_by { |game| game.moves }.slice(0, 6)
         render json: @gameLeaderboard, except: [:created_at, :updated_at]
     end 
 
