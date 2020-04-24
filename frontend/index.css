@@ -19,7 +19,6 @@ body {
   height: 95vh;
   width: 95vh;
 }
-/* #stopWatch { width: 280px; height: auto; text-align: center; display: block; padding: 5px; margin: 0 auto; } #timer, #fulltime { width: auto; height: auto; padding: 10px; font-weight: bold; font-family: tahoma; display: block; border: 1px solid #eee; text-align: center; box-shadow: 0 0 5px #ccc; background: #fbfbf0; color: black; border-bottom:4px solid darkgrey; } button { cursor: pointer; font-weight: 700; } #fulltime { display:none; font-size:16px; font-weight:bold; }  */
 
 .timer-container{
   margin-left: 5%; 
@@ -61,10 +60,6 @@ body {
   border-width: 1px;
   transition: all .2s linear;
 }
-/* 
-.tile:hover{
-  top: 100px;
-} */
 
 #empty {
   background-image: url("./assets/images/fieri/Guy0.jpg");
