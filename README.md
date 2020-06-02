@@ -51,3 +51,5 @@ Features
 **Winning the Game**
 
 ![GAMEOVER](https://media.giphy.com/media/WqG4OWOPnen5GVE036/giphy.gif)
+
+*Created by Alisher Fayzimatov and Jacob Kenny*
