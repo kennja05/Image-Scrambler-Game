@@ -24,4 +24,16 @@ https://www.youtube.com/watch?v=BNmb7fpG_LQ
         d) If stuck, the user can click the 'reshuffle' button in order to start back from the beginning
         e) The game will be over when the user successfuly assembles the image pieces, or closes the page
 
-Good Luck!
+*Features
+
+Getting Started
+
+![STARTUP](https://media.giphy.com/media/UrPH02ZBQqXk0ZW9Qk/giphy.gif)
+
+Gameplay
+
+![GAMEPLAY](https://media.giphy.com/media/ckThXih9Pi1Oyzyh6M/giphy.gif)
+
+Winning the Game
+
+![GAMEOVER](https://media.giphy.com/media/WqG4OWOPnen5GVE036/giphy.gif)
