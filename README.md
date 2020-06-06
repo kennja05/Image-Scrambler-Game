@@ -1,7 +1,7 @@
 Background
 ==========
 
-In order to pass through the gates of Flavortown there are a variety of trials that one must pass - there are physical challenges such as eat a whole plate of trashcan nachos, and get frosted tips at the salon, but in order for there to be balance there must also be mental challenges...
+The game begins by creating a 3x3 grid, with eight of grid segments holding a part of a whole image, and the ninth segment is blank. The nine segments are scrambled in random order at the beginning of the game, and it is then the job of the user to reassemble the image by moving the blank segment around the board by using the arrow keys.
 
 Video Demonstration
 ===================
@@ -52,4 +52,7 @@ Features
 
 ![GAMEOVER](https://media.giphy.com/media/WqG4OWOPnen5GVE036/giphy.gif)
 
-*Created by Alisher Fayzimatov and Jacob Kenny*
+*Repositories linked to the live site are found at https://github.com/kennja05/Img_Scr_Backend and https://github.com/kennja05/Img_Scr_frontend
+
+*Created by Alisher Fayzimatov and Jacob Kenny (2020)*
+
