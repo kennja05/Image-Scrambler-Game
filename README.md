@@ -52,7 +52,7 @@ Features
 
 ![GAMEOVER](https://media.giphy.com/media/WqG4OWOPnen5GVE036/giphy.gif)
 
-*Repositories linked to the live site are found at https://github.com/kennja05/Img_Scr_Backend and https://github.com/kennja05/Img_Scr_frontend
+*Repositories linked to the live site are found at https://github.com/kennja05/Img_Scr_Backend and https://github.com/kennja05/Img_Scr_frontend*
 
 *Created by Alisher Fayzimatov and Jacob Kenny (2020)*
 
